@@ -3,30 +3,50 @@ package ru.skypro;
 public class Main {
 
     public static void main(String[] args) {
-        int clientOs = 0;
+        int clientOs = 0; //0 - для IOS; 1 - для Android default - ос телефона не распознана
         if (clientOs == 1) {
             System.out.println("Установите версию приложения для Андроид");
-        } else if (clientOs == 0) ;
-        {
+        } else if (clientOs == 0) {
             System.out.println("Установите версию прижения для IOS");
+        } else {
+            System.out.println("Ос телефона не распознана");
         }
+        int clientOS = 1;
         int clientDeviceYear = 2015;
-        if (clientDeviceYear > 2015) {
-            System.out.println("Приложение будет работать корректно");
-        } else if (clientDeviceYear < 2015) ;
-        {
-            System.out.println("Советуем установить новую облегчённую версию для IOS по ссылке");
+
+        boolean isLiteNeded = clientDeviceYear < 2015;
+        if (clientOS == 0) {
+            if (isLiteNeded) {
+                System.out.println("Установите Lite-версию приложения для IOS по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для IOS по ссылке");
+            }
+        } else {
+            if (isLiteNeded) {
+                System.out.println("Установите Lite-версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для Android по ссылке");
+            }
         }
 
         int year = 2021;
-        {
-            System.out.println("2021 не год является високосным");
+
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+            System.out.println(year + "-- високосный год.");
+        } else {
+            System.out.println(year + "-- не является високосным годом.");
         }
 
-        int deliveryDistance = 95;
-        if (deliveryDistance > 60 && deliveryDistance < 100) ;
-        System.out.println("Курьерская доставка составит трое суток");
 
+        int deliveryDistance = 95;
+        int result = 1;
+        if (deliveryDistance > 20) {
+            result++;
+        }
+        if (deliveryDistance > 60 && deliveryDistance <= 100) {
+            result++;
+        }
+        System.out.println("Потребуется дней: " + result);
 
         int mounthInYear = 12;
         switch (mounthInYear) {
@@ -68,3 +88,4 @@ public class Main {
             default:
                 System.out.println("Такого месяца не существует");
         }
+    }}
